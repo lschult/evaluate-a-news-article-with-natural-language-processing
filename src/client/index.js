@@ -1,7 +1,17 @@
-import { checkForName } from "./js/nameChecker";
-import { handleSubmit } from "./js/formHandler";
+import { handleSubmit, testfunction } from "./js/formHandler";
 
-console.log(checkForName);
+import * as FormHandler from "./js/formHandler";
 
-alert("I EXIST 2");
-console.log("CHANGE!!");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded");
+
+  const form = document.getElementsByTagName("form")[0];
+
+  if (form) {
+    FormHandler.testfunction();
+    form.addEventListener("submit", handleSubmit);
+  } else {
+    // TODO: HANDLE CASE
+    console.log("NO FORM");
+  }
+});
