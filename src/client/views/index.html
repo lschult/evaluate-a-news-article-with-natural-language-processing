@@ -2,42 +2,55 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Test</title>
-    <link rel="stylesheet" href="/styles/resets.css" />
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/form.css" />
-    <link rel="stylesheet" href="/styles/footer.css" />
+    <title>
+      Evaluate a news article with MeaningCloud Sentiment Analysis API
+    </title>
   </head>
 
   <body>
     <header>
-      <div class="">Logo</div>
-      <div class="">navigation</div>
+      <div class="">Udacity Project</div>
+      <div class="">
+        <h1>
+          Evaluate a news article with MeaningCloud Sentiment Analysis API
+        </h1>
+      </div>
     </header>
 
     <main>
-      <section>
-        <form class="">
+      <section class="url-card">
+        <h1>Enter a URL to find out the results</h1>
+        <form>
           <input
-            id="name"
+            id="url"
             type="text"
-            name="input"
+            name="url"
             value=""
-            placeholder="Name"
+            type="url"
+            placeholder="Enter URL"
           />
           <button type="submit">Submit</button>
         </form>
       </section>
-
-      <section>
-        <strong>Form Results:</strong>
-        <div id="results"></div>
-      </section>
+      <section class="results-section"></section>
     </main>
 
     <footer>
-      <p>This is a footer</p>
+      <p>Evaluate a news article with MeaningCloud Sentiment Analysis API</p>
     </footer>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log("Service Worker sucessfully registered");
+            })
+            .catch((error) => {
+              console.log("Service Worker registration failed:", error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

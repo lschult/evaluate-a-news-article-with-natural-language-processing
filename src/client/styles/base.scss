@@ -1,14 +1,84 @@
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: grid;
+  gap: 0;
+  grid-auto-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 main {
-    flex: 2;
+  padding: 0 2rem;
+  background: rgb(242, 242, 242);
+}
+
+.header-card {
+  grid-area: top;
+}
+.url-card {
+  grid-area: middle;
+  text-align: center;
+}
+.results-card {
+  grid-area: bottom;
+}
+
+%card-box {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.card {
+  @extend %card-box;
+  background: #bbdefb;
+  display: block;
 }
 
 section {
-    max-width: 800px;
-    margin: 50px auto;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.results-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%result-container {
+  @extend %card-box;
+  width: 100%;
+  max-width: 32rem;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 2, 0.2);
+}
+
+.result-error {
+  @extend %result-container;
+  font-weight: bold;
+  color: #b30000;
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.evaluation-results {
+  @extend %result-container;
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: max-content;
+  grid-gap: 8px;
+  background-color: rgb(255, 255, 255);
+  > h3 {
+    font-weight: bold;
+    padding-right: 4px;
+  }
+
+  > .snippet {
+    grid-column: 1 / span 2;
+  }
 }
