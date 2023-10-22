@@ -18,23 +18,24 @@ export function handleSubmit(event) {
   }
 }
 
-function evaluateArticleFromURL(url) {
+async function evaluateArticleFromURL(url) {
   const APIurl = "http://localhost:8080/api/article-evaluate";
 
-  return fetch(APIurl, {
-    method: "POST",
-    credentials: "same-origin",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ url }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      return { data };
-    })
-    .catch(() => {
-      return Promise.resolve({ error: "Computer says NO, Try again later" });
+  try {
+    const res = await fetch(APIurl, {
+      method: "POST",
+      credentials: "same-origin",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url }),
     });
+    const data = await res.json();
+    return { data };
+  } catch {
+    return await Promise.resolve({
+      error: "Computer says NO, Try again later",
+    });
+  }
 }

@@ -13,10 +13,10 @@ export function showErrorMessage(errorMessage = "") {
   updateResultsHTML(errorHTML);
 }
 
-export function showEvaluationResults(results = {}) {
+export function createEvaluationTemplate(results = {}) {
   const { polarity, subjectivity, snippet } = results;
 
-  const template = `
+  return `
   <div class="evaluation-results">
     <h3>Polarity:</h3>
     <p>${polarity}</p>
@@ -25,6 +25,10 @@ export function showEvaluationResults(results = {}) {
     <p class="snippet">${snippet}</p>
   </div>
   `;
+}
+
+export function showEvaluationResults(results = {}) {
+  const template = createEvaluationTemplate(results);
 
   updateResultsHTML(template);
 }
