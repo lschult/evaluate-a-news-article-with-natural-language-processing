@@ -10,11 +10,11 @@ The webserver/routing is done by express and node, the build tool will be webpac
 
 Installation and running the project:
 
-1)Install npm:
-npm install
+1. Install npm:
+   npm install
 
-2)Run project in development mode:
-npm run build-dev
+2. Run project in development mode:
+   npm run build-dev
 
 Run project in production mode mode:
 npm run build-prod
